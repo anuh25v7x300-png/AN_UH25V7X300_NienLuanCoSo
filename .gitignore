@@ -42,6 +42,8 @@
 /frontend/public/*
 !/frontend/public/images/
 !/frontend/public/images/**
+!/frontend/public/fonts/
+!/frontend/public/fonts/**
 
 # Keep generated files, tests and editor configuration out of every subtree.
 **/node_modules/

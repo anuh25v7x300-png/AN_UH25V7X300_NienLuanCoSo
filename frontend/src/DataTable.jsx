@@ -1,0 +1,15 @@
+import { useEffect, useMemo, useState } from 'react';
+import Icon from './Icon';
+
+export default function DataTable({ columns, rows, name, filters, empty = 'Chưa có dữ liệu.', pageSize = 10 }) {
+  const [query,setQuery] = useState(''), [page,setPage] = useState(1), [sort,setSort] = useState(null);
+  useEffect(() => { setPage(1); },[query,rows]);
+  const filtered=useMemo(() => {
+    const needle=query.toLocaleLowerCase('vi').trim();
+    const selected=rows.filter(row => !needle || Object.values(row).join(' ').toLocaleLowerCase('vi').includes(needle));
+    if(sort){const col=columns.find(c=>c.key===sort.key);selected.sort((a,b)=>{const av=col.sortValue?col.sortValue(a):a[col.key],bv=col.sortValue?col.sortValue(b):b[col.key];const value=typeof av==='number'&&typeof bv==='number'?av-bv:String(av??'').localeCompare(String(bv??''),'vi',{numeric:true});return sort.direction==='asc'?value:-value;});}
+    return selected;
+  },[rows,query,sort,columns]);
+  const totalPages=Math.max(1,Math.ceil(filtered.length/pageSize)), current=Math.min(page,totalPages), visible=filtered.slice((current-1)*pageSize,current*pageSize);
+  return <div className="data-table-panel"><div className="table-toolbar"><label className="table-search"><Icon name="search"/><input type="search" aria-label={`Tìm ${name}`} placeholder={`Tìm ${name.toLocaleLowerCase('vi')}...`} value={query} onChange={e=>setQuery(e.target.value)}/></label><div className="table-filters">{filters}</div></div><div className="admin-table-wrap" role="region" aria-label={`Bảng ${name}`} tabIndex={0}><table className="admin-table"><thead><tr>{columns.map(col=><th key={col.key} aria-sort={sort?.key===col.key?(sort.direction==='asc'?'ascending':'descending'):undefined}>{col.sortable===false?col.label:<button className="column-sort" onClick={()=>setSort({key:col.key,direction:sort?.key===col.key&&sort.direction==='asc'?'desc':'asc'})}>{col.label}<Icon name="chevronDown" className={sort?.key===col.key&&sort.direction==='asc'?'sort-ascending':''}/></button>}</th>)}</tr></thead><tbody>{visible.length?visible.map(row=><tr key={row.id}>{columns.map(col=><td key={col.key}>{col.render?col.render(row):row[col.key]??'—'}</td>)}</tr>):<tr><td colSpan={columns.length}><div className="table-empty"><Icon name="search"/><h3>{query?'Không tìm thấy kết quả':empty}</h3><p>{query?'Thử tên, mã hoặc từ khóa khác.':'Dữ liệu mới sẽ xuất hiện tại đây.'}</p>{query&&<button className="button button-quiet" onClick={()=>setQuery('')}>Xóa tìm kiếm</button>}</div></td></tr>}</tbody></table></div><div className="table-pagination"><span>{filtered.length?`Hiển thị ${(current-1)*pageSize+1}–${Math.min(current*pageSize,filtered.length)} trên ${filtered.length}`:'0 kết quả'}</span><div><button className="icon-button" aria-label="Trang trước" disabled={current===1} onClick={()=>setPage(current-1)}><Icon name="chevronLeft"/></button><span>Trang {current} / {totalPages}</span><button className="icon-button" aria-label="Trang sau" disabled={current===totalPages} onClick={()=>setPage(current+1)}><Icon name="chevronRight"/></button></div></div></div>;
+}

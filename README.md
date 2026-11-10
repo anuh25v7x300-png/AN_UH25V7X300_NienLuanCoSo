@@ -94,6 +94,7 @@ bun run build
 - Đăng ký/đăng nhập, hồ sơ, đổi mật khẩu; phân quyền khách hàng và quản trị.
 - Đặt hoa COD, lịch sử/chi tiết đơn và hủy đơn đủ điều kiện.
 - Hoa yêu thích, đánh giá sau khi giao hàng và biểu mẫu liên hệ.
-- Quản trị sản phẩm, tải ảnh, danh mục, đơn hàng, tài khoản khách, đánh giá và lời nhắn; thống kê doanh thu.
+- Khu vực quản trị riêng với sidebar; bảng tìm kiếm, sắp xếp, phân trang và hộp thoại xem/thêm/sửa/xác nhận. Quản lý hoa, ảnh, danh mục, đơn, khách hàng, đánh giá, liên hệ và thống kê doanh thu.
+- Bố cục và cỡ chữ thích ứng từ điện thoại đến màn hình lớn; font tiếng Việt được lưu trong project, icon dùng SVG.
 
 Chuyển khoản thủ công được bật khi điền đủ `BANK_NAME`, `BANK_ACCOUNT_NUMBER`, `BANK_ACCOUNT_NAME` trong `backend/.env` rồi khởi động lại ứng dụng. Quản trị đối chiếu và xác nhận tiền thủ công. Ngày nhận là mong muốn của khách; phí giao và lịch giao cần cửa hàng xác nhận.

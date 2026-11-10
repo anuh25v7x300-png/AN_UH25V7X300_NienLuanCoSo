@@ -1,0 +1,37 @@
+const paths = {
+  arrowRight: 'M4 12h16m-6-6 6 6-6 6',
+  arrowUpRight: 'M6 18 18 6M6 6h12v12',
+  arrowUp: 'M12 20V4m-7 7 7-7 7 7',
+  menu: 'M4 6h16M4 12h16M4 18h16',
+  close: 'm6 6 12 12M6 18 18 6',
+  bag: 'M5 7h14l1 14H4L5 7Zm3 0V6a4 4 0 0 1 8 0v1',
+  user: 'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21v-2a8 8 0 0 1 16 0v2',
+  logout: 'M9 4H4v16h5m7-13 5 5-5 5M9 12h12',
+  heart: 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z',
+  chevronDown: 'm6 9 6 6 6-6',
+  chevronLeft: 'm15 5-7 7 7 7',
+  chevronRight: 'm9 5 7 7-7 7',
+  plus: 'M12 5v14M5 12h14',
+  minus: 'M5 12h14',
+  check: 'm5 12 4 4L19 6',
+  alert: 'M12 8v5m0 4h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z',
+  search: 'M21 21l-5-5M18 10A8 8 0 1 1 2 10a8 8 0 0 1 16 0Z',
+  chart: 'M4 3v18h17M8 16v-5m5 5V7m5 9V4',
+  orders: 'M8 4H4v17h16V4h-4M8 2h8v5H8V2Zm0 10h8m-8 4h5',
+  flower: 'M12 8c-7-10-13 1-4 4-10 5 0 13 4 4 5 10 14 0 4-4 10-5 0-13-4-4Zm0 0v8m-4-4h8',
+  grid: 'M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 0h7v7h-7v-7Z',
+  users: 'M15 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 21v-2a8 8 0 0 1 16 0v2m0-18a4 4 0 0 1 0 8m4 10v-2a8 8 0 0 0-3-6',
+  message: 'M21 4H3v13h5l4 4 4-4h5V4ZM7 9h10M7 13h6',
+  star: 'm12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2-5.5-2.9-5.5 2.9 1-6.2L2 9.6l6.2-.9L12 3Z',
+  edit: 'm15 5 4 4M4 20l4-1 13-13-4-4L4 15v5Z',
+  trash: 'M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7',
+  eye: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Zm13 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
+  refresh: 'M20 7a9 9 0 0 0-15-2L2 8m0-6v6h6m-4 9a9 9 0 0 0 15 2l3-3m0 6v-6h-6',
+  upload: 'M12 16V3m-5 5 5-5 5 5M3 15v6h18v-6',
+  lock: 'M5 10h14v11H5V10Zm3 0V6a4 4 0 0 1 8 0v4m-4 5v2',
+  home: 'm2 11 10-9 10 9M5 9v12h14V9M9 21v-7h6v7',
+};
+
+export default function Icon({ name = 'arrowRight', className = '', ...props }) {
+  return <svg className={`icon ${className}`} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" {...props}><path d={paths[name] || paths.arrowRight}/></svg>;
+}
