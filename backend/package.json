@@ -1,0 +1,16 @@
+{
+  "name": "thuyan-flower-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.js",
+    "start": "bun src/index.js",
+    "seed": "bun src/seed.js"
+  },
+  "dependencies": {
+    "elysia": "1.4.30"
+  },
+  "engines": {
+    "bun": ">=1.4.4"
+  }
+}

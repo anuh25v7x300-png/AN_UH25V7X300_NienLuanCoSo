@@ -1,0 +1,14 @@
+{
+  "name": "tiem-hoa-an",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun scripts/dev.js",
+    "setup": "bun scripts/setup.js",
+    "start": "bun scripts/dev.js",
+    "build": "bun scripts/build.js"
+  },
+  "engines": {
+    "bun": ">=1.4.4"
+  }
+}
