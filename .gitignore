@@ -4,6 +4,7 @@
 !/.gitattributes
 !/.bun-version
 !/package.json
+!/README.md
 !/setup.cmd
 !/setup.sh
 !/start.cmd
